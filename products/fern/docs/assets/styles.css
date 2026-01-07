@@ -1,0 +1,151 @@
+/*** PRODUCT SELECTOR STYLING ***/
+
+/* General styling */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.02em !important;
+}
+
+/* Header styling */
+.fern-header, .fern-header-tabs {
+  backdrop-filter: blur(0.5rem);
+  background-color: transparent !important;
+}
+
+:is(.dark) .fern-header, :is(.dark) .fern-header-tabs {
+  background-color: transparent !important;
+}
+
+/* Product selector dropdown styling */
+@media (min-width: 1024px) {
+  div[data-testid="product-dropdown-content"] {
+    border-radius: 1.5rem !important;
+  }
+
+  .product-dropdown-trigger {
+    font-size: 0.875rem !important;
+
+    svg {
+      transform: translateY(2px);
+    }
+  }
+
+  .fern-product-selector {
+    transform: translate(-2px, 2px);
+  }
+
+  .product-item-title {
+    font-size: 1.00rem;
+  }
+
+  div:has(> .fern-product-selector-radio-group) {
+    margin-top: 0.5rem;
+  }
+
+  /* Remove default header since we'll add per-column headers */
+  div:has(> .fern-product-selector-radio-group):before {
+    content: "";
+    display: none;
+  }
+
+  .fern-product-selector-radio-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 2.5rem 1.25rem 1.25rem 1.25rem;
+    height: auto;
+    min-height: 200px;
+
+    > a {
+      max-width: 320px;
+      margin: -0.75rem;
+      position: relative;
+
+      .fern-selection-item {
+        border-radius: 1rem;
+      }
+    }
+
+    /* Home column - first column */
+    > a[href*="/home"]:before {
+      content: "Home";
+      font-weight: 600;
+      font-size: 1rem;
+      color: #008700;
+      position: absolute;
+      top: -2rem;
+      left: 0.5rem;
+    }
+
+    > a[href*="/home"] {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    /* Docs Tools column - second column */
+    > a[href*="getting-started"]:before {
+      content: "Docs Tools";
+      font-weight: 600;
+      font-size: 1rem;
+      color: #008700;
+      position: absolute;
+      top: -2rem;
+      left: 0.5rem;
+    }
+
+    > a[href*="getting-started"] {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    > a[href*="editing"] {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    > a[href*="customization"] {
+      grid-column: 2;
+      grid-row: 3;
+    }
+
+    /* APIs column - third column */
+    > a[href*="plant-api"]:before {
+      content: "APIs";
+      font-weight: 600;
+      font-size: 1rem;
+      color: #008700;
+      position: absolute;
+      top: -2rem;
+      left: 0.5rem;
+    }
+
+    > a[href*="plant-api"] {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    > a[href*="user-api"] {
+      grid-column: 3;
+      grid-row: 2;
+    }
+  }
+}
+
+/* Mobile responsive styling */
+@media (max-width: 640px) {
+  .fern-product-selector-radio-group {
+    width: 100%;
+  }
+
+  div[data-testid="product-dropdown-content"] {
+    width: calc(100vw - 2rem) !important;
+  }
+
+  div.fern-scroll-area-viewport.group\/sidebar.mask-grad-y-3.sticky.overscroll-contain > div > div {
+    border-top-width: 0px !important;
+  }
+}

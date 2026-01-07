@@ -1,0 +1,200 @@
+---
+layout: custom
+---
+
+<style>
+{`
+.fern-product-selector {
+  display: none !important;
+}
+
+/* Landing page container */
+.landing-container {
+  position: relative;
+  min-height: 80vh;
+  padding: 1rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Gradient background blobs */
+.bg-gradient-1 {
+  position: fixed;
+  top: 0;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(112, 225, 85, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-gradient-2 {
+  position: fixed;
+  top: 20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 135, 0, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-gradient-3 {
+  position: fixed;
+  bottom: 10%;
+  left: 20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(74, 190, 59, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0.5rem 0 1rem 0;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  color: #008700;
+}
+
+.dark .hero-title {
+  color: #70E155;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--grayscale-11);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Section styling */
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--grayscale-a4);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* Enhanced card styling */
+.landing-container .fern-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--grayscale-a4) !important;
+  background: var(--grayscale-a2) !important;
+}
+
+.landing-container .fern-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -12px rgba(112, 225, 85, 0.25);
+  border-color: var(--accent-a6) !important;
+}
+
+.dark .landing-container .fern-card:hover {
+  box-shadow: 0 12px 40px -12px rgba(112, 225, 85, 0.15);
+}
+
+/* Card icon animation */
+.landing-container .fern-card svg {
+  transition: transform 0.3s ease;
+}
+
+.landing-container .fern-card:hover svg {
+  transform: scale(1.1);
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--grayscale-a6), transparent);
+  margin: 3rem 0;
+}
+`}
+</style>
+
+<div className="landing-container">
+  <div className="bg-gradient-1"></div>
+  <div className="bg-gradient-2"></div>
+  <div className="bg-gradient-3"></div>
+
+  <div className="hero">
+    <h1 className="hero-title">Welcome to Fern</h1>
+    <p className="hero-subtitle">
+      Everything you need to build beautiful documentation in minutes.
+    </p>
+  </div>
+
+  <div className="section">
+    <div className="section-header">
+      <h2 className="section-title">Documentation Tools</h2>
+    </div>
+    <CardGroup cols={3}>
+      <Card
+        title="Getting Started"
+        icon="duotone rocket"
+        href="/getting-started"
+      >
+        Get up and running with the documentation platform
+      </Card>
+      <Card
+        title="Editing"
+        icon="duotone pen-to-square"
+        href="/editing"
+      >
+        Fern Editor and CLI for writing and previewing docs
+      </Card>
+      <Card
+        title="Customization"
+        icon="duotone palette"
+        href="/customization"
+      >
+        Customize navigation, styling, and appearance
+      </Card>
+    </CardGroup>
+  </div>
+
+  <div className="divider"></div>
+
+  <div className="section">
+    <div className="section-header">
+      <h2 className="section-title">APIs</h2>
+    </div>
+    <CardGroup cols={2}>
+      <Card
+        title="Plant API"
+        icon="duotone leaf"
+        href="/plant-api"
+      >
+        Manage plants in the store
+      </Card>
+      <Card
+        title="User API"
+        icon="duotone user"
+        href="/user-api"
+      >
+        User authentication and management
+      </Card>
+    </CardGroup>
+  </div>
+</div>

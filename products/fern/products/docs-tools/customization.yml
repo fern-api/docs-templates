@@ -1,0 +1,28 @@
+# Customization Product Configuration
+# Includes navigation setup and styling customization
+
+tabs:
+  navigation:
+    display-name: Navigation
+    icon: fa-solid fa-sitemap
+    slug: navigation
+  styling:
+    display-name: Styling
+    icon: fa-solid fa-brush
+    slug: styling
+
+navigation:
+  - tab: navigation
+    layout:
+      - section: Navigation Setup
+        contents:
+          - page: Set up navigation
+            path: ../../docs/pages/navigation.mdx
+            icon: fa-duotone fa-sitemap
+  - tab: styling
+    layout:
+      - section: Customize Appearance
+        contents:
+          - page: Customize your docs
+            path: ../../docs/pages/customization.mdx
+            icon: fa-duotone fa-palette

@@ -1,0 +1,36 @@
+# Plant API Product Configuration
+# Demonstrates API product with tabs for Overview and Endpoints
+
+tabs:
+  overview:
+    display-name: Overview
+    icon: fa-solid fa-home
+    slug: overview
+  endpoints:
+    display-name: Endpoints
+    icon: fa-solid fa-code
+    slug: endpoints
+
+navigation:
+  - tab: overview
+    layout:
+      - section: Getting Started
+        contents:
+          - page: Plant API Overview
+            path: ../../docs/pages/api-reference-overview.mdx
+  - tab: endpoints
+    layout:
+      - api: Plant Endpoints
+        layout:
+          - endpoint: POST /plant
+          - endpoint: PUT /plant
+          - endpoint: GET /plant/{plantId}
+          - endpoint: GET /plant/search/status
+          - endpoint: GET /plant/search/tags
+          # Hide user endpoints from this product
+          - endpoint: GET /user/auth/login
+            hidden: true
+          - endpoint: GET /user/auth/logout
+            hidden: true
+          - endpoint: GET /user/{username}
+            hidden: true

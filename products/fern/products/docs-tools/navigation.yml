@@ -1,0 +1,28 @@
+# Navigation Product Configuration
+# Demonstrates documentation product with tabs for Guide and Reference
+
+tabs:
+  guide:
+    display-name: Guide
+    icon: fa-solid fa-book
+    slug: guide
+  reference:
+    display-name: Reference
+    icon: fa-solid fa-list
+    slug: reference
+
+navigation:
+  - tab: guide
+    layout:
+      - section: Navigation Setup
+        contents:
+          - page: Set up navigation
+            path: ../../docs/pages/navigation.mdx
+            icon: fa-duotone fa-sitemap
+  - tab: reference
+    layout:
+      - section: Quick Links
+        contents:
+          - page: Welcome
+            path: ../../docs/pages/welcome.mdx
+            icon: fa-duotone fa-house

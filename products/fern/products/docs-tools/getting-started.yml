@@ -1,0 +1,28 @@
+# Getting Started Product Configuration
+# Main getting started guide for documentation
+
+tabs:
+  overview:
+    display-name: Overview
+    icon: fa-solid fa-house
+    slug: overview
+  support:
+    display-name: Support
+    icon: fa-solid fa-headset
+    slug: support
+
+navigation:
+  - tab: overview
+    layout:
+      - section: Getting Started
+        contents:
+          - page: Welcome to the docs
+            path: ../../docs/pages/welcome.mdx
+            icon: fa-duotone fa-house
+  - tab: support
+    layout:
+      - section: Get Help
+        contents:
+          - page: Support
+            path: ../../docs/pages/support.mdx
+            icon: fa-duotone fa-headset

@@ -1,0 +1,38 @@
+# User API Product Configuration
+# Demonstrates API product with tabs for Overview and Endpoints
+
+tabs:
+  overview:
+    display-name: Overview
+    icon: fa-solid fa-home
+    slug: overview
+  endpoints:
+    display-name: Endpoints
+    icon: fa-solid fa-code
+    slug: endpoints
+
+navigation:
+  - tab: overview
+    layout:
+      - section: Getting Started
+        contents:
+          - page: User API Overview
+            path: ../../docs/pages/api-reference-overview.mdx
+  - tab: endpoints
+    layout:
+      - api: User Endpoints
+        layout:
+          - endpoint: GET /user/auth/login
+          - endpoint: GET /user/auth/logout
+          - endpoint: GET /user/{username}
+          # Hide plant endpoints from this product
+          - endpoint: POST /plant
+            hidden: true
+          - endpoint: PUT /plant
+            hidden: true
+          - endpoint: GET /plant/{plantId}
+            hidden: true
+          - endpoint: GET /plant/search/status
+            hidden: true
+          - endpoint: GET /plant/search/tags
+            hidden: true

@@ -1,0 +1,7 @@
+# Home Product Configuration
+# Links back to the landing page
+
+navigation:
+  - page: Welcome
+    path: ../docs/pages/landing.mdx
+    icon: fa-duotone fa-house

@@ -1,0 +1,97 @@
+# yaml-language-server: $schema=https://schema.buildwithfern.dev/docs-yml.json
+
+instances:
+  - url: docs-templates-products.docs.buildwithfern.com # update this to {yourorg}.docs.buildwithfern.com
+    # custom-domain: plantstore.dev # specify your custom domain when you are ready to go live
+
+ai-search:
+  location:
+    - docs
+
+title: Fern Docs Starter
+
+css: docs/assets/styles.css
+
+# Landing page with links to all products
+landing-page:
+  page: Welcome
+  path: docs/pages/landing.mdx
+  slug: /
+
+# Product Switcher Configuration
+# This template demonstrates multi-product documentation with a product switcher
+products:
+  # Home - links to landing page
+  - display-name: Home
+    path: ./products/home.yml
+    icon: fa-solid fa-house
+    slug: home
+    subtitle: Back to overview
+
+  # Docs Tools Group
+  - display-name: Getting Started
+    path: ./products/docs-tools/getting-started.yml
+    icon: fa-solid fa-rocket
+    slug: getting-started
+    subtitle: Get started with the docs
+
+  - display-name: Editing
+    path: ./products/docs-tools/editing.yml
+    icon: fa-solid fa-pen-to-square
+    slug: editing
+    subtitle: Fern Editor and CLI
+
+  - display-name: Customization
+    path: ./products/docs-tools/customization.yml
+    icon: fa-solid fa-palette
+    slug: customization
+    subtitle: Customizing your docs
+
+  # APIs Group
+  - display-name: Plant API
+    path: ./products/apis/plant.yml
+    icon: fa-solid fa-leaf
+    slug: plant-api
+    subtitle: Manage plants in the store
+
+  - display-name: User API
+    path: ./products/apis/user.yml
+    icon: fa-solid fa-user
+    slug: user-api
+    subtitle: User authentication and management
+
+# Header-based layout with product switcher
+layout:
+  page-width: full
+  tabs-placement: header
+  searchbar-placement: header
+
+navbar-links:
+  - type: minimal
+    text: Fork this repo
+    url: https://github.com/fern-api/docs-starter
+  - type: filled
+    text: Dashboard
+    url: https://dashboard.buildwithfern.com
+  - type: github
+    value: https://github.com/fern-api/fern
+
+colors:
+  accent-primary:
+    dark: "#70E155"
+    light: "#008700"
+  background:
+    dark: "#111113"
+    light: "#FFFFFF"
+
+theme:
+  page-actions: toolbar
+  footer-nav: minimal
+
+logo:
+  dark: docs/assets/logo.svg
+  light: docs/assets/logo.svg
+  height: 20
+  href: https://buildwithfern.com
+
+favicon: docs/assets/favicon.svg

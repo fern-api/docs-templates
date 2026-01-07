@@ -1,0 +1,28 @@
+# Editing Product Configuration
+# Demonstrates documentation product with tabs for Getting Started and Writing
+
+tabs:
+  getting-started:
+    display-name: Fern Editor and CLI
+    icon: fa-solid fa-rocket
+    slug: getting-started
+  writing:
+    display-name: Writing Content
+    icon: fa-solid fa-pencil
+    slug: writing
+
+navigation:
+  - tab: getting-started
+    layout:
+      - section: Edit Your Docs
+        contents:
+          - page: Edit your docs
+            path: ../../docs/pages/editing-your-docs.mdx
+            icon: fa-duotone fa-pen-to-square
+  - tab: writing
+    layout:
+      - section: Content Creation
+        contents:
+          - page: Write content
+            path: ../../docs/pages/writing-content.mdx
+            icon: fa-duotone fa-file-lines
