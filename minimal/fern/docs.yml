@@ -113,22 +113,22 @@ navigation:
   - tab: fork
   - tab: dashboard
 
-# Minimalist dark theme colors
+# Theme colors (matching classic template)
 colors:
   accent-primary:
-    dark: "#FFFFFF"
-    light: "#353535"
+    dark: "#70E155"
+    light: "#008700"
   background:
-    dark: "#171717"
+    dark: "#111113"
     light: "#FFFFFF"
   sidebar-background:
-    dark: "#171717"
+    dark: "#111113"
     light: "#FFFFFF"
   header-background:
-    dark: "#171717"
+    dark: "#111113"
     light: "#FFFFFF"
   card-background:
-    dark: "#171717"
+    dark: "#111113"
     light: "#FFFFFF"
   border:
     dark: "#444444"
