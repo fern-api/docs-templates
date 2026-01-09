@@ -1,0 +1,83 @@
+name: Update Fern CLI Version
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-fern-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Get latest Fern CLI version
+        id: get-version
+        run: |
+          LATEST_VERSION=$(npm view fern-api version)
+          echo "latest=$LATEST_VERSION" >> $GITHUB_OUTPUT
+          echo "Latest Fern CLI version: $LATEST_VERSION"
+
+      - name: Get current version
+        id: current-version
+        run: |
+          CURRENT_VERSION=$(jq -r '.version' minimal/fern/fern.config.json)
+          echo "current=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "Current version: $CURRENT_VERSION"
+
+      - name: Check if update is needed
+        id: check-update
+        run: |
+          if [ "${{ steps.get-version.outputs.latest }}" != "${{ steps.current-version.outputs.current }}" ]; then
+            echo "needs_update=true" >> $GITHUB_OUTPUT
+            echo "Update needed: ${{ steps.current-version.outputs.current }} -> ${{ steps.get-version.outputs.latest }}"
+          else
+            echo "needs_update=false" >> $GITHUB_OUTPUT
+            echo "No update needed"
+          fi
+
+      - name: Update fern.config.json files
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: |
+          NEW_VERSION="${{ steps.get-version.outputs.latest }}"
+
+          for template in minimal classic products; do
+            jq --arg version "$NEW_VERSION" '.version = $version' "$template/fern/fern.config.json" > tmp.json
+            mv tmp.json "$template/fern/fern.config.json"
+            echo "Updated $template/fern/fern.config.json to version $NEW_VERSION"
+          done
+
+      - name: Create Pull Request
+        if: steps.check-update.outputs.needs_update == 'true'
+        id: create-pr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update Fern CLI to ${{ steps.get-version.outputs.latest }}"
+          title: "chore: update Fern CLI to ${{ steps.get-version.outputs.latest }}"
+          body: |
+            This PR automatically updates the Fern CLI version from `${{ steps.current-version.outputs.current }}` to `${{ steps.get-version.outputs.latest }}`.
+
+            Updated files:
+            - `minimal/fern/fern.config.json`
+            - `classic/fern/fern.config.json`
+            - `products/fern/fern.config.json`
+          branch: auto/update-fern-cli
+          delete-branch: true
+
+      - name: Enable auto-merge
+        if: steps.check-update.outputs.needs_update == 'true' && steps.create-pr.outputs.pull-request-number
+        run: |
+          gh pr merge ${{ steps.create-pr.outputs.pull-request-number }} --auto --squash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
